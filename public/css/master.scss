@@ -11,6 +11,16 @@ body {
   padding-top: 65px;
 }
 
+h3 {
+  font-weight: 300;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 10px;
+}
+
+h4 {
+  font-weight: 300;
+}
+
 nav {
   width: 100%;
   overflow: hidden;
@@ -48,4 +58,9 @@ nav {
       border-bottom: 3px solid $orange;
     }
   }
+}
+
+.menu-desc {
+  display: none;
+  margin-left: 10px;
 }
