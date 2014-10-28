@@ -1,3 +1,35 @@
+body {
+  background: #dedede;
+  padding-top: 65px; }
 
+nav {
+  width: 100%;
+  overflow: hidden;
+  height: 50px;
+  background: white;
+  position: fixed;
+  top: 0;
+  z-index: 1000; }
+  nav h1 {
+    color: #428bca;
+    line-height: 50px;
+    margin: 0 30px 0 0;
+    padding: 0;
+    font-weight: 300; }
+  nav ul li {
+    line-height: 50px;
+    padding: 0;
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 1.3em !important;
+    font-weight: 300;
+    height: 50px; }
+    nav ul li a {
+      display: inline-block;
+      height: 50px; }
+    nav ul li a:hover {
+      text-decoration: none;
+      color: #428bca;
+      border-bottom: 3px solid #f09d54; }
 
 /*# sourceMappingURL=master.css.map */

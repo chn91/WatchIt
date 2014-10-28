@@ -10,6 +10,6 @@ class PagesController extends \BaseController {
 	 */
 	public function index()
 	{
-		return $_ENV['DB_HOST'];
+		return View::make('index');
 	}
 }
