@@ -1,3 +1,4 @@
+/*
 $(document).ready(function() {
     $("nav ul li a").hover(
         function () {
