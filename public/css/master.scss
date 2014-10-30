@@ -7,7 +7,7 @@ $blue: #428bca;
 }
 
 body {
-  background: #dedede;
+  background: #fefefe;
   padding-top: 65px;
 }
 
@@ -29,6 +29,7 @@ nav {
   position: fixed;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid #eee;
 
   h1 {
     color: $blue;

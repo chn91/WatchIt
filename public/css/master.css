@@ -1,5 +1,5 @@
 body {
-  background: #dedede;
+  background: #fefefe;
   padding-top: 65px; }
 
 h3 {
@@ -17,7 +17,8 @@ nav {
   background: white;
   position: fixed;
   top: 0;
-  z-index: 1000; }
+  z-index: 1000;
+  border-bottom: 1px solid #eee; }
   nav h1 {
     color: #428bca;
     line-height: 50px;
