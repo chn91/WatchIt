@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateDirectorsTable extends Migration {
+class CreateNationalitiesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,11 @@ class CreateDirectorsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('directors', function(Blueprint $table)
+		Schema::create('nationalities', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->string('fName');
-            $table->string('lName');
-            $table->boolean('gender'); # 1 = Male, 0 = Female
-            $table->timestamps();
+            $table->string('nationality');
+			$table->timestamps();
 		});
 	}
 
@@ -30,7 +28,7 @@ class CreateDirectorsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('directors');
+		Schema::drop('nationalities');
 	}
 
 }

@@ -14,7 +14,7 @@ Route::get('test', function() {
     echo '<pre>';
 
     for($i = 0; $i < 10; $i++) {
-        $content = file_get_contents('http://api.themoviedb.org/3/movie/'.$i.'?api_key=' . getenv('MOVIE_API'),
+        $content = file_get_contents('http://api.themoviedb.org/3/movie/'.$i.'?api_key=XXX',
             false,
             stream_context_create(
                 array(
@@ -24,16 +24,10 @@ Route::get('test', function() {
                 )
             ));
         $json = \GuzzleHttp\json_decode($content);
-        if (property_exists($json, 'status_code')) {
-            if ($json->status_code == 6) {
-                echo '<p>NO MOVIE</p>';
-            } else {
-                print_r($json);
-            }
-        } else {
-            print_r($json);
+        if (property_exists($json, 'original_title')) {
+            print_r($json->original_title);
+            echo '<br>';
         }
-
     }
 
     echo '</pre>';

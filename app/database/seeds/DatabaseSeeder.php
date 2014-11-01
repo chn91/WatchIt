@@ -1,6 +1,16 @@
 <?php
 
+/**
+ * Class DatabaseSeeder
+ */
 class DatabaseSeeder extends Seeder {
+
+    /**
+     * @var array
+     */
+    private $tables = [
+
+    ];
 
 	/**
 	 * Run the database seeds.
@@ -11,7 +21,14 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		// $this->call('UserTableSeeder');
+		$this->call('UsersTableSeeder');
 	}
+
+    /**
+     *
+     */
+    private function cleanDatabase() {
+
+    }
 
 }

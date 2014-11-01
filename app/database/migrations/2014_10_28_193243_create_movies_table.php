@@ -22,8 +22,6 @@ class CreateMoviesTable extends Migration {
             $table->string('cover');
             $table->integer('language_id')->unsigned();
             $table->foreign('language_id')->references('id')->on('languages');
-            $table->integer('country_id')->unsigned();
-            $table->foreign('country_id')->references('id')->on('countries');
             $table->integer('studio_id')->unsigned();
             $table->foreign('studio_id')->references('id')->on('studios');
             $table->timestamps();
