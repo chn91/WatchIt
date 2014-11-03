@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class ActorsController
+ */
 class ActorsController extends \BaseController {
 
     /**
@@ -10,19 +13,18 @@ class ActorsController extends \BaseController {
      */
     public function index()
     {
-        //
+        return View::make('actors');
     }
 
     /**
-     * Display the specified resource.
-     * GET /movies/{id}
+     * Return a view with a single actor
      *
-     * @param  int  $id
-     * @return Response
+     * @param Actor $actor
+     * @return $this
      */
-    public function show($id)
+    public function show(Actor $actor)
     {
-        //
+        return View::make('actors')->with(compact('actor'));
     }
 
 }

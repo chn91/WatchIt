@@ -17,9 +17,9 @@ class CreateActorsTable extends Migration {
 			$table->increments('id');
             $table->string('fName');
             $table->string('lName');
-            $table->text('bio');
+            $table->text('bio')->nullable();
             $table->date('birthday')->nullable();
-            $table->boolean('gender'); # 1 = Male, 0 = Female
+            $table->string('image')->nullable();
             $table->integer('nationality_id')->unsigned();
             $table->foreign('nationality_id')->references('id')->on('nationalities');
 			$table->timestamps();
