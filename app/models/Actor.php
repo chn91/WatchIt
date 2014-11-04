@@ -20,6 +20,10 @@ class Actor extends Eloquent {
         }
     }
 
+    public function language() {
+        return $this->hasOne('Language');
+    }
+
     public function movies() {
 
     }

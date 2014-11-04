@@ -103,6 +103,9 @@ nav {
 .movie-item:hover .image {
   background-size: 115%; }
 
+.actor-item h4 {
+  margin-bottom: 30px; }
+
 .mask {
   width: 230px;
   height: 230px;
@@ -110,5 +113,25 @@ nav {
   overflow: hidden; }
   .mask img {
     max-width: 100%; }
+
+.comment {
+  margin-top: 15px; }
+  .comment img {
+    width: 50px;
+    border-radius: 50%;
+    height: auto;
+    border: 1px solid #666; }
+
+.actor-rating {
+  font-size: 4em;
+  font-weight: 400; }
+
+.actor-prof {
+  overflow: hidden; }
+  .actor-prof img {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    border: 1px solid #666; }
 
 /*# sourceMappingURL=master.css.map */

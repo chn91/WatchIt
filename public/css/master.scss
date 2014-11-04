@@ -136,6 +136,12 @@ nav {
   background-size: 115%;
 }
 
+.actor-item {
+  h4 {
+    margin-bottom: 30px;
+  }
+}
+
 .mask {
   width: 230px;
   height: 230px;
@@ -144,5 +150,31 @@ nav {
 
   img {
     max-width: 100%;
+  }
+}
+
+.comment {
+  margin-top: 15px;
+
+  img {
+    width: 50px;
+    border-radius: 50%;
+    height: auto;
+    border: 1px solid #666;
+  }
+}
+
+.actor-rating {
+  font-size: 4em;
+  font-weight: 400;
+ }
+
+.actor-prof {
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    border: 1px solid #666;
   }
 }

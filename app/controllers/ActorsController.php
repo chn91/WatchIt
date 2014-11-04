@@ -25,7 +25,7 @@ class ActorsController extends \BaseController {
      */
     public function show(Actor $actor)
     {
-        return View::make('actors')->with(compact('actor'));
+        return View::make('actor')->with(compact('actor'));
     }
 
 }

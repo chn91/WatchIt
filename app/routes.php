@@ -1,8 +1,11 @@
 <?php
 
+# Authenticate a user from the DB
+Auth::loginUsingId(1);
+
 # Bind routes with model
-Route::bind('movie', 'Movie');
-Route::bind('actor', 'Actor');
+Route::model('movie', 'Movie');
+Route::model('actor', 'Actor');
 
 # Home
 Route::get('/', [

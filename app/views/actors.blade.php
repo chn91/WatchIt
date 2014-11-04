@@ -5,7 +5,8 @@
 <h3>ACTORS</h3>
 <br>
 @foreach($actors as $actor)
-<div class="col-md-3">
+<a href="/actor/{{ $actor->id }}">
+<div class="col-md-3 actor-item">
     <div class="text-center">
         <div class="mask grow">
             <img src="{{ $actor->image() }}" alt="{{ $actor->fName }}">
@@ -13,6 +14,7 @@
         <h4>{{ $actor->fName . ' ' . $actor->lName }}</h4>
     </div>
 </div>
+</a>
 @endforeach
 
 <br>
