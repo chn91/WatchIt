@@ -13,7 +13,8 @@ class ActorsController extends \BaseController {
      */
     public function index()
     {
-        return View::make('actors');
+        $actors = Actor::paginate(24);
+        return View::make('actors')->with(compact('actors'));
     }
 
     /**

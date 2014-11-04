@@ -12,6 +12,14 @@ class Actor extends Eloquent {
 
     protected $fillable = ['fName', 'lName', 'bio', 'birthday', 'nationality_id'];
 
+    public function image() {
+        if ($this->image != null) {
+            return 'https://image.tmdb.org/t/p/w396/' . $this->image;
+        } else {
+            return asset('img/nophoto.jpg');
+        }
+    }
+
     public function movies() {
 
     }

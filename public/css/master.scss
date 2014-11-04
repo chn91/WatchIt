@@ -120,7 +120,7 @@ nav {
   height: 100%;
   z-index: 50;
   display: block;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.2);
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -ms-transition: all .2s ease-in-out;
@@ -133,5 +133,16 @@ nav {
 }
 
 .movie-item:hover .image {
-  background-size: 120%;
+  background-size: 115%;
+}
+
+.mask {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    max-width: 100%;
+  }
 }
