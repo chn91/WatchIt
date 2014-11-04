@@ -19,11 +19,7 @@ class CreateMoviesTable extends Migration {
             $table->text('resume');
             $table->integer('length');
             $table->date('release');
-            $table->string('cover');
-            $table->integer('language_id')->unsigned();
-            $table->foreign('language_id')->references('id')->on('languages');
-            $table->integer('studio_id')->unsigned();
-            $table->foreign('studio_id')->references('id')->on('studios');
+            $table->string('cover')->nullable();
             $table->timestamps();
 		});
 	}

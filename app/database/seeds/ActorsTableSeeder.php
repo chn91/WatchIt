@@ -7,10 +7,13 @@ class ActorsTableSeeder extends Seeder {
 
 	public function run()
 	{
+        echo "# SEEDING FOR ACTORS BEGUN\n";
+        $start = time();
+
         $faker = Faker::create();
 
         # 1379622
-        foreach(range(1000, 1050) as $index) # Last index of person 1. nov 2014
+        foreach(range(1, 5000) as $index) # Last index of person 1. nov 2014
         {
             $content = file_get_contents('http://api.themoviedb.org/3/person/' . $index . '?api_key=' . getenv('MOVIE_API'),
                 false,
@@ -58,8 +61,17 @@ class ActorsTableSeeder extends Seeder {
                     'image' => $json->profile_path,
                     'nationality_id' => $nationality,
                 ]);
+
+            }
+
+            if ($index % 100 === 0) {
+                echo "  - Seeded: " . $index . "\n";
             }
         }
+
+        $finish = time();
+        $total = $finish - $start;
+        echo "# SEEDING FOR ACTORS ENDED: " . ($total) . " seconds...\n";
 	}
 
 }

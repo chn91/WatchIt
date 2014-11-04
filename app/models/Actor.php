@@ -12,4 +12,16 @@ class Actor extends Eloquent {
 
     protected $fillable = ['fName', 'lName', 'bio', 'birthday', 'nationality_id'];
 
+    public function movies() {
+
+    }
+
+    public function comments() {
+
+    }
+
+    public function likes() {
+
+    }
+
 }

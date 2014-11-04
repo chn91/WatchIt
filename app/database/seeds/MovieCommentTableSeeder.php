@@ -7,14 +7,20 @@ class MovieCommentTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
+        $faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
-			MovieComment::create([
+        $users  = User::lists('id');
+        $movies = Movie::lists('id');
 
-			]);
-		}
+        foreach(range(1, 1000) as $index)
+        {
+            DB::insert("INSERT INTO movie_comment (user_id, movie_id, comment, created_at, updated_at) VALUES
+                      (?, ?, ?, NOW(), NOW())", [
+                $faker->randomElement($users),
+                $faker->randomElement($movies),
+                $faker->paragraph(),
+            ]);
+        }
 	}
 
 }

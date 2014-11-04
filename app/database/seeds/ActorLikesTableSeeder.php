@@ -7,14 +7,22 @@ class ActorLikesTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
+        $faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
-			ActorLike::create([
+        $users  = User::lists('id');
+        $actors = Actor::lists('id');
 
-			]);
-		}
+        foreach(range(1, 5000) as $index)
+        {
+            $val = $faker->boolean() ? 1 : $faker->boolean() ? 1 : -1;
+
+            DB::insert("INSERT INTO actor_likes (user_id, actor_id, `like`, created_at, updated_at) VALUES
+                      (?, ?, ?, NOW(), NOW())", [
+                $faker->randomElement($users),
+                $faker->randomElement($actors),
+                $val,
+            ]);
+        }
 	}
 
 }

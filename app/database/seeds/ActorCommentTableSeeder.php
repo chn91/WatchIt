@@ -9,11 +9,17 @@ class ActorCommentTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
-			ActorComment::create([
+        $users  = User::lists('id');
+        $actors = Actor::lists('id');
 
-			]);
+		foreach(range(1, 1000) as $index)
+		{
+			DB::insert("INSERT INTO actor_comment (user_id, actor_id, comment, created_at, updated_at) VALUES
+                      (?, ?, ?, NOW(), NOW())", [
+                $faker->randomElement($users),
+                $faker->randomElement($actors),
+                $faker->paragraph(),
+            ]);
 		}
 	}
 
