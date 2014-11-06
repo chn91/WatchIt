@@ -63,9 +63,9 @@
     (function() {
         var ctx = document.getElementById('movies-year').getContext('2d');
         var chart = {
-            labels:     ['2000', '2001', '2002', '2003', '2004', '2005', '2006'],
+            labels:     {{ json_encode($movieLabels) }},
             datasets:   [{
-                data:           ['300', '245', '648', '393', '282', '763', '493'],
+                data:           {{ json_encode($movieData) }},
                 fillColor:      "rgba(107, 170, 228, 0.3)",
                 strokeColor:    "#3885cc",
                 pointColor:    "#3885cc"
@@ -85,9 +85,9 @@
 
         var ctx2 = document.getElementById('actor-ages').getContext('2d');
         var chart2 = {
-            labels:     ['0-10', '10-20', '20-30', '30-40', '40-50'],
+            labels: {{ json_encode($ageLabels) }},
             datasets:   [{
-                data:           ['2341', '24255', '27536', '36262', '25678'],
+                data:           {{ json_encode($agesArr) }},
                 fillColor:      "rgba(107, 170, 228, 0.3)",
                 strokeColor:    "#3885cc",
                 pointColor:    "#3885cc"

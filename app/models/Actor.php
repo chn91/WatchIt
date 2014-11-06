@@ -33,7 +33,8 @@ class Actor extends Eloquent {
     }
 
     public function likes() {
-
+        $sum = DB::select('SELECT SUM(`like`) as sum FROM actor_likes WHERE actor_id = ' . $this->id);
+        return $sum[0]->sum;
     }
 
 }

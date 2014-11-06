@@ -13,7 +13,7 @@ class MoviesController extends \BaseController {
 	 */
 	public function index()
 	{
-        $movies = Movie::paginate(24);
+        $movies = Movie::orderBy('release', 'DESC')->paginate(24);
 		return View::make('movies')
             ->with(compact('movies'));
 	}

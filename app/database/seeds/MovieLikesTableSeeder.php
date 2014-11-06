@@ -12,7 +12,7 @@ class MovieLikesTableSeeder extends Seeder {
         $users  = User::lists('id');
         $movies = Movie::lists('id');
 
-        foreach(range(1, 5000) as $index)
+        foreach(range(1, 10000) as $index)
         {
             $val = $faker->boolean() ? 1 : $faker->boolean() ? 1 : -1;
 

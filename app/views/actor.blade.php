@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
 <div class="row">
     <div class="col-md-3 actor-prof">
         <br>
@@ -9,7 +8,7 @@
             <img src="{{ $actor->image() }}" alt="{{ $actor->fName }}">
             <br>
             <div class="actor-rating">
-            +234
+            {{ $actor->likes() }}
             </div>
             <div class="btn-group btn-group-lg">
                 <button type="button" class="btn btn-default">+</button>

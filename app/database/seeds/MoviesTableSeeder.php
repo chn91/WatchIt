@@ -7,14 +7,15 @@ class MoviesTableSeeder extends Seeder {
 
     public function run()
     {
-        echo "# SEEDING FOR MOVIES BEGUN\n";
+        echo "# SEEDING FOR MOVIES\n";
 
         $start = time();
 
         $faker = Faker::create();
 
         # 299901
-        foreach(range(4501, 10000) as $index) # Last index of person 1. nov 2014
+        ## 12100
+        foreach(range(12100, 15000) as $index) # Last index of person 1. nov 2014
         {
             $content = file_get_contents('http://api.themoviedb.org/3/movie/' . $index . '?api_key=' . getenv('MOVIE_API'),
                 false,
@@ -33,7 +34,7 @@ class MoviesTableSeeder extends Seeder {
                     'title'         => $json->title,
                     'resume'        => $json->overview,
                     'length'        => $json->runtime,
-                    'release'       => $json->release_date,
+                    'release'       => date('Y-m-d', strtotime($json->release_date)),
                     'cover'         => $json->poster_path,
                 ]);
             }
@@ -45,7 +46,7 @@ class MoviesTableSeeder extends Seeder {
 
         $finish = time();
         $total = $finish - $start;
-        echo "# SEEDING FOR MOVIES ENDED: " . ($total) . " seconds...\n";
+        echo "# SEEDING FOR MOVIES ENDED: " . ($total) . " seconds (~". ($total / 60) ." minutes)...\n";
 
     }
 

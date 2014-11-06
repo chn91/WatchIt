@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder {
         #'NationalitiesTableSeeder',
         #'GenresTableSeeder',
         #'StudiosTableSeeder',
-        'ActorsTableSeeder',
+        #'ActorsTableSeeder',
         'MoviesTableSeeder',
         #'WatchedTableSeeder',
         #'ToWatchedTableSeeder',
