@@ -12,7 +12,7 @@ class MovieCommentTableSeeder extends Seeder {
         $users  = User::lists('id');
         $movies = Movie::lists('id');
 
-        foreach(range(1, 1000) as $index)
+        foreach(range(1, 10000) as $index)
         {
             DB::insert("INSERT INTO movie_comment (user_id, movie_id, comment, created_at, updated_at) VALUES
                       (?, ?, ?, NOW(), NOW())", [

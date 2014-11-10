@@ -16,8 +16,8 @@ class Language extends Eloquent {
      */
     protected $fillable = ['language'];
 
-    public function actors() {
-        return $this->belongsTo('Actor');
+    public function movies() {
+        return $this->belongsTo('Movie');
     }
 
 }

@@ -5,7 +5,7 @@ class StudiosTableSeeder extends Seeder {
 	public function run()
 	{
 
-		foreach(range(1, 100) as $index)
+		foreach(range(1, 50) as $index)
 		{
             $content = file_get_contents('http://api.themoviedb.org/3/company/' . $index . '?api_key=' . getenv('MOVIE_API'),
                 false,
@@ -21,7 +21,8 @@ class StudiosTableSeeder extends Seeder {
 
             if (property_exists($json, 'name')) {
                 Studio::create([
-                    'name' => $json->name
+                    'name' => $json->name,
+                    'moviedb_id' => $json->id
                 ]);
             }
 		}

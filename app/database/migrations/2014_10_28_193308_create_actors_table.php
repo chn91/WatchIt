@@ -19,7 +19,10 @@ class CreateActorsTable extends Migration {
             $table->string('lName');
             $table->text('bio')->nullable();
             $table->date('birthday')->nullable();
+            $table->date('deathday')->nullable();
             $table->string('image')->nullable();
+            $table->integer('moviedb_id')->unsigned();
+            $table->string('imdb_id')->nullable();
             $table->integer('nationality_id')->unsigned();
             $table->foreign('nationality_id')->references('id')->on('nationalities');
 			$table->timestamps();

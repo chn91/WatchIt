@@ -16,4 +16,8 @@ class Nationality extends Eloquent {
      */
     protected $fillable = ['nationality'];
 
+    public function actors() {
+        return $this->hasMany('Actor');
+    }
+
 }

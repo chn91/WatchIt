@@ -16,7 +16,8 @@ class CreateStudiosTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->timestamps();
+            $table->integer('moviedb_id')->unsigned();
+            $table->timestamps();
 		});
 	}
 

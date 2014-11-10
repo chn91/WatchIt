@@ -16,4 +16,8 @@ class Genre extends Eloquent {
      */
     protected $fillable = ['name'];
 
+    public function movies() {
+        return $this->belongsToMany('Movie');
+    }
+
 }

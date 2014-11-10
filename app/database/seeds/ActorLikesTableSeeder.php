@@ -12,7 +12,7 @@ class ActorLikesTableSeeder extends Seeder {
         $users  = User::lists('id');
         $actors = Actor::lists('id');
 
-        foreach(range(1, 10000) as $index)
+        foreach(range(1, 1000) as $index)
         {
             $val = $faker->boolean() ? 1 : $faker->boolean() ? 1 : -1;
 

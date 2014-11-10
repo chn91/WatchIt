@@ -10,7 +10,7 @@ class ToWatchTableSeeder extends Seeder {
         $faker = Faker::create();
 
         $users  = User::lists('id');
-        $movies = Actor::lists('id');
+        $movies = Movie::lists('id');
 
         foreach(range(1, 10000) as $index)
         {

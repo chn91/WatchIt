@@ -10,14 +10,18 @@ class Movie extends Eloquent {
 	 */
 	protected $table = 'movies';
 
-    protected $fillable = ['title', 'resume', 'lenght', 'release', 'cover'];
+    protected $guarded = [];
 
     public function actors() {
-
+        return $this->belongsToMany('Actor');
     }
 
     public function genres() {
+        return $this->belongsToMany('Genre');
+    }
 
+    public function studios() {
+        return $this->belongsToMany('Studio');
     }
 
     public function cover() {
@@ -29,11 +33,22 @@ class Movie extends Eloquent {
     }
 
     public function comments() {
-
+        return $this->hasMany('MovieComment')->orderBy('created_at', 'DESC');
     }
 
     public function likes() {
+        $sum = DB::select('SELECT SUM(`like`) as sum FROM movie_likes WHERE movie_id = ' . $this->id);
+        return $sum[0]->sum != null ? $sum[0]->sum : 0;
+    }
 
+    public function watched() {
+        $sum = DB::select('SELECT COUNT(*) as sum FROM watched WHERE movie_id = ' . $this->id);
+        return $sum[0]->sum != null ? $sum[0]->sum : 0;
+    }
+
+    public function toWatch() {
+        $sum = DB::select('SELECT COUNT(*) as sum FROM to_watch WHERE movie_id = ' . $this->id);
+        return $sum[0]->sum != null ? $sum[0]->sum : 0;
     }
 
 }

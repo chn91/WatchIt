@@ -131,4 +131,42 @@ nav {
     border-radius: 3px;
     border: 1px solid #666; }
 
+.movie-detail h3 span {
+  color: #888; }
+.movie-detail h4 {
+  margin-top: 15px; }
+.movie-detail .actor-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px; }
+.movie-detail .actors {
+  text-align: center; }
+  .movie-detail .actors img {
+    width: 100%;
+    height: auto; }
+.movie-detail .genres {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px; }
+  .movie-detail .genres li {
+    display: inline-block;
+    list-style: none;
+    background: #0088CC;
+    border-radius: 20px;
+    padding: 3px 10px;
+    color: white;
+    font-size: 10px; }
+
+.movies .cover {
+  width: 140px;
+  height: 180px;
+  overflow: hidden; }
+  .movies .cover img {
+    width: 100%;
+    height: auto; }
+
 /*# sourceMappingURL=master.css.map */

@@ -22,6 +22,7 @@ class GenresTableSeeder extends Seeder {
             if (property_exists($g, 'name')) {
                 Genre::create([
                     'name' => $g->name,
+                    'moviedb_id' => $g->id,
                 ]);
             }
 

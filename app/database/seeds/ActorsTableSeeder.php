@@ -11,9 +11,10 @@ class ActorsTableSeeder extends Seeder {
         $start = time();
 
         $faker = Faker::create();
+        $actors = [];
 
         # 1379622
-        foreach(range(1001, 1100) as $index) # Last index of person 1. nov 2014
+        foreach(range(1501, 2500) as $index) # Last index of person 1. nov 2014
         {
             $content = file_get_contents('http://api.themoviedb.org/3/person/' . $index . '?api_key=' . getenv('MOVIE_API'),
                 false,
@@ -53,25 +54,49 @@ class ActorsTableSeeder extends Seeder {
                 $lastname = array_pop($parts);
                 $firstname = implode(" ", $parts);
 
-                Actor::create([
+                if ($json->deathday != null) {
+                    $deathday = date('Y-m-d', strtotime($json->deathday));
+                } else {
+                    $deathday = null;
+                }
+
+                if ($json->birthday != null) {
+                    $birth = date('Y-m-d', strtotime($json->birthday));
+                } else {
+                    $birth = null;
+                }
+
+                $timestamp = Carbon\Carbon::now();
+
+                $actors[] = [
                     'fName' => $firstname,
                     'lName' => $lastname,
                     'bio' => $json->biography,
-                    'birthday' => date('Y-m-d', strtotime($json->birthday)),
+                    'birthday' => $birth,
+                    'deathday' => $deathday,
                     'image' => $json->profile_path,
+                    'moviedb_id' => $json->id,
+                    'imdb_id' => $json->imdb_id,
                     'nationality_id' => $nationality,
-                ]);
+                    'created_at'    => $timestamp,
+                    'updated_at'    => $timestamp
+                ];
 
             }
 
             if ($index % 100 === 0) {
-                echo "  - Seeded: " . $index . "\n";
+                echo "  - Prepared: " . $index . "\n";
             }
+        }
+
+        foreach (array_chunk($actors, 500) as $chunk) {
+            Actor::insert($chunk);
         }
 
         $finish = time();
         $total = $finish - $start;
-        echo "# SEEDING FOR ACTORS ENDED: " . ($total) . " seconds...\n";
+        echo "# SEEDING FOR ACTORS ENDED: " . ($total) . " seconds (~". ((int) ($total / 60)) ." minutes)...\n";
+
 	}
 
 }

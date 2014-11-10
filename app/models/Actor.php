@@ -20,21 +20,21 @@ class Actor extends Eloquent {
         }
     }
 
-    public function language() {
-        return $this->hasOne('Language');
+    public function nationality() {
+        return $this->hasOne('Nationality');
     }
 
     public function movies() {
-
+        return $this->belongsToMany('Movie');
     }
 
     public function comments() {
-
+        return $this->hasMany('ActorComment')->orderBy('created_at', 'DESC');
     }
 
     public function likes() {
         $sum = DB::select('SELECT SUM(`like`) as sum FROM actor_likes WHERE actor_id = ' . $this->id);
-        return $sum[0]->sum;
+        return $sum[0]->sum != null ? $sum[0]->sum : 0;
     }
 
 }

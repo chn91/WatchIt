@@ -16,10 +16,14 @@ class CreateMoviesTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('title');
-            $table->text('resume');
-            $table->integer('length');
-            $table->date('release');
+            $table->string('original_title')->nullable();
+            $table->text('resume')->nullable();
+            $table->integer('length')->nullable();
+            $table->date('release')->nullable();
+            $table->boolean('released');
             $table->string('cover')->nullable();
+            $table->integer('moviedb_id')->unsigned();
+            $table->string('imdb_id')->nullable();
             $table->timestamps();
 		});
 	}
