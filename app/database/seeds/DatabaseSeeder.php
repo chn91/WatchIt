@@ -11,22 +11,22 @@ class DatabaseSeeder extends Seeder {
      * @var array
      */
     private $tables = [
-        'actors',           # Real data
+        #'actors',           # Real data
         #'movies',           # Real data
         #'users',
         #'languages',        # Real data
         #'nationalities',    # Real data
         #'genre_movie',      # Real data
-        'actor_movie',      # Real data
+        #'actor_movie',      # Real data
         #'movie_studio',     # Real data
         #'language_movie',   # Real data
         #'watched',
         #'studios',
         #'to_watch',
-        'actor_comment',
+        #'actor_comment',
         #'movie_comment',
         #'movie_likes',
-        'actor_likes',
+        #'actor_likes',
     ];
 
     /**
@@ -40,11 +40,11 @@ class DatabaseSeeder extends Seeder {
         #'NationalitiesTableSeeder',
         #'GenresTableSeeder',
         #'StudiosTableSeeder',
-        'ActorsTableSeeder',
+        #'ActorsTableSeeder',
         #'MoviesTableSeeder',
         #'ActorMovieTableSeeder',
-        #'WatchedTableSeeder',
-        #'ToWatchTableSeeder',
+        'WatchedTableSeeder',
+        'ToWatchTableSeeder',
         #'ActorCommentTableSeeder',
         #'MovieCommentTableSeeder',
         #'MovieLikesTableSeeder',

@@ -14,7 +14,7 @@ class ActorsTableSeeder extends Seeder {
         $actors = [];
 
         # 1379622
-        foreach(range(1501, 2500) as $index) # Last index of person 1. nov 2014
+        foreach(range(42501, 50000) as $index) # Last index of person 1. nov 2014
         {
             $content = file_get_contents('http://api.themoviedb.org/3/person/' . $index . '?api_key=' . getenv('MOVIE_API'),
                 false,
@@ -86,17 +86,23 @@ class ActorsTableSeeder extends Seeder {
 
             if ($index % 100 === 0) {
                 echo "  - Prepared: " . $index . "\n";
+                $this->seed($actors);
+                $actors = [];
             }
         }
 
-        foreach (array_chunk($actors, 500) as $chunk) {
-            Actor::insert($chunk);
-        }
+        $this->seed($actors);
 
         $finish = time();
         $total = $finish - $start;
         echo "# SEEDING FOR ACTORS ENDED: " . ($total) . " seconds (~". ((int) ($total / 60)) ." minutes)...\n";
 
 	}
+
+    public function seed($array) {
+        foreach (array_chunk($array, 500) as $chunk) {
+            Actor::insert($chunk);
+        }
+    }
 
 }

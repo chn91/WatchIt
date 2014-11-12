@@ -9,17 +9,20 @@ class ActorLikesTableSeeder extends Seeder {
 	{
         $faker = Faker::create();
 
-        $users  = User::lists('id');
-        $actors = Actor::lists('id');
+        $sumUsers = DB::select('SELECT COUNT(*) as sum FROM users');
+        $maxUsers = $sumUsers[0]->sum;
 
-        foreach(range(1, 1000) as $index)
+        $sumActor = DB::select('SELECT COUNT(*) as sum FROM actors');
+        $maxActor = $sumActor[0]->sum;
+
+        foreach(range(1, 1000000) as $index)
         {
             $val = $faker->boolean() ? 1 : $faker->boolean() ? 1 : -1;
 
             DB::insert("INSERT INTO actor_likes (user_id, actor_id, `like`, created_at, updated_at) VALUES
                       (?, ?, ?, NOW(), NOW())", [
-                $faker->randomElement($users),
-                $faker->randomElement($actors),
+                $faker->numberBetween(1, $maxUsers),
+                $faker->numberBetween(1, $maxActor),
                 $val,
             ]);
         }

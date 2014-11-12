@@ -46,3 +46,7 @@ Route::post('actor/{id}/like', [
     'as'    => 'actorLike',
     'uses'  => 'ActorsController@like'
 ]);
+
+Route::get('info', function() {
+    phpinfo();
+});

@@ -10,6 +10,7 @@ class PagesController extends \BaseController {
 	 */
 	public function index()
 	{
+        # ACTOR AGES
         $ages = DB::select('select count(*) as sum
                                 from (
                                 select  case
@@ -44,6 +45,7 @@ class PagesController extends \BaseController {
 
         $ageLabels = ['10-20', '20-30', '30-40', '40-50', '50-60', '60-70', '70-80', '80-90', '> 90'];
 
+        # MOVIES BY YEAR
         $movies = DB::select('SELECT
                               Year(`release`) as year,
                               Count(*) As total
@@ -58,46 +60,11 @@ class PagesController extends \BaseController {
             $movieData[] = $movies[$i]->total;
         }
 
-        $topMovies = DB::select('SELECT movies.title, COUNT(`movie_id`) as sum
-                                FROM movies, watched
-                                WHERE movies.id = watched.movie_id
-                                GROUP BY movie_id
-                                ORDER BY sum DESC
-                                LIMIT 10');
-
-        $topMoviesLabels = [];
-        $topMoviesData = [];
-
-        foreach($topMovies as $topMovie) {
-            $topMoviesLabels[] = $topMovie->title;
-            $topMoviesData[] = $topMovie->sum;
-        }
-
-        $toWatch = DB::select('SELECT movies.title, COUNT(`movie_id`) as sum
-                                FROM movies, to_watch
-                                WHERE movies.id = to_watch.movie_id
-                                GROUP BY movie_id
-                                ORDER BY sum DESC
-                                LIMIT 10');
-
-        $topToWatchLabels = [];
-        $topToWatchData = [];
-
-        foreach($toWatch as $topMovie) {
-            $topToWatchLabels[] = $topMovie->title;
-            $topToWatchData[] = $topMovie->sum;
-        }
-
-        $studioLabels = ['Warner Bros.', 'Universal', 'Paramount', 'Sony', 'Disney', 'FOX'];
-
 		return View::make('index')
             ->with(compact('movieLabels'))
             ->with(compact('movieData'))
             ->with(compact('agesArr'))
-            ->with(compact('ageLabels'))
-            ->with(compact('topMoviesLabels'))
-            ->with(compact('topMoviesData'))
-            ->with(compact('topToWatchLabels'))
-            ->with(compact('topToWatchData'));
+            ->with(compact('ageLabels'));
+
 	}
 }

@@ -9,14 +9,17 @@ class ActorMovieTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10000) as $index)
-		{
-            $movies = Movie::lists('id');
-            $actors = Actor::lists('id');
+        $sumActor = DB::select('SELECT COUNT(*) as sum FROM actors');
+        $maxActor = $sumActor[0]->sum;
 
+        $sumMovie = DB::select('SELECT COUNT(*) as sum FROM movies');
+        $maxMovie = $sumMovie[0]->sum;
+
+		foreach(range(1, 1000000) as $index)
+		{
             DB::insert('INSERT INTO `actor_movie` (`movie_id`, `actor_id`, `role`, `created_at`, `updated_at`) VALUES(?, ?, ?, NOW(), NOW())', [
-                $faker->randomElement($movies),
-                $faker->randomElement($actors),
+                $faker->numberBetween(1, $maxMovie),
+                $faker->numberBetween(1, $maxActor),
                 $faker->word()
             ]);
 		}

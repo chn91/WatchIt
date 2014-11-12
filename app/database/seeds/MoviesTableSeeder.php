@@ -15,7 +15,7 @@ class MoviesTableSeeder extends Seeder {
 
         # 299901
         ## 12100
-            foreach(range(5001, 10000) as $index) # Last index of person 1. nov 2014
+        foreach(range(75001, 150000) as $index) # Last index of person 1. nov 2014
         {
             $content = file_get_contents('http://api.themoviedb.org/3/movie/' . $index . '?api_key=' . getenv('MOVIE_API'),
                 false,

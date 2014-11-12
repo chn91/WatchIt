@@ -9,15 +9,18 @@ class ToWatchTableSeeder extends Seeder {
     {
         $faker = Faker::create();
 
-        $users  = User::lists('id');
-        $movies = Movie::lists('id');
+        $sumUsers = DB::select('SELECT COUNT(*) as sum FROM users');
+        $maxUsers = $sumUsers[0]->sum;
 
-        foreach(range(1, 10000) as $index)
+        $sumMovie = DB::select('SELECT COUNT(*) as sum FROM movies');
+        $maxMovie = $sumMovie[0]->sum;
+
+        foreach(range(1, 1000000) as $index)
         {
             DB::insert("INSERT INTO to_watch (user_id, movie_id, created_at, updated_at) VALUES
                       (?, ?, NOW(), NOW())", [
-                $faker->randomElement($users),
-                $faker->randomElement($movies),
+                $faker->numberBetween(1, $maxUsers),
+                $faker->numberBetween(1, $maxMovie),
             ]);
         }
     }

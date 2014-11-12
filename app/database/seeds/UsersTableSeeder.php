@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder {
 
         $pwd = Hash::make('abc123');
 
-		foreach(range(1, 10000) as $index)
+		foreach(range(1000001, 2000000) as $index)
 		{
             $timestamp = Carbon\Carbon::now();
             $users[] = [
@@ -30,19 +30,22 @@ class UsersTableSeeder extends Seeder {
             ];
 
             if ($index % 1000 === 0) {
-                echo "  - Prepared: " . $index . "\n";
+                echo "  - Seeded: " . $index . "\n";
+                $this->seed($users);
+                $users = [];
             }
 		}
-
-        foreach (array_chunk($users, 500) as $chunk) {
-            User::insert($chunk);
-        }
 
         $finish = time();
         $total = $finish - $start;
         echo "# SEEDING FOR USERS ENDED: " . ($total) . " seconds (~". ((int) ($total / 60)) ." minutes)...\n";
 
+    }
 
+    public function seed($users) {
+        foreach (array_chunk($users, 500) as $chunk) {
+            User::insert($chunk);
+        }
     }
 
 }
